@@ -1,10 +1,28 @@
 @import "tailwindcss";
 
 body {
+    background: #f4f6f3;
     -ms-overflow-style: none;
     scrollbar-width: none;
     overflow-y: scroll;
 }
 body::-webkit-scrollbar {
     display: none;
+}
+
+@keyframes pulseGrow {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.pulse-grow {
+    animation: pulseGrow 2s ease-in-out infinite;
+}
+
+p, h1, h2, h3, button{
+    color: #013101;
 }

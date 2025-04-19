@@ -67,21 +67,22 @@ const toggleInstructions = () => {
 </script>
 
 <template>
-<div class="flex flex-col items-center text-center">
-  <h1>Mealz 4 u!</h1>
-  <h2>Your random meal for today's dinner is...</h2>
+    <div class="flex flex-col items-center text-center">
+      <h1 class="text-xl font-bold">Mealz 4 u!</h1>
+      <h2>Your random meal for today's dinner is...</h2>
 
-  <div v-if="!loaded">
-    <VueSpinnerPuff size="100" />
+      <div v-if="!loaded">
+        <VueSpinnerPuff size="100"/>
+      </div>
+
+      <div v-else-if="randomMeal" class="bg-green-200 p-4 outline outline-4 outline-green-50 border-4 border-green-100 rounded-lg">
+        <MealSummary :randomMeal="randomMeal"/>
+        <Tags :tags-array="tagsArray"/>
+        <Actions :loadRandomMeal="loadRandomMeal" :toggleIngredients="toggleIngredients" :toggleInstructions="toggleInstructions"/>
+      </div>
+
+      <Ingredients :is-showing-ingredients :random-meal="randomMeal"/>
+      <Instructions :is-showing-instructions="isShowingInstructions" :steps="steps"/>
   </div>
 
-  <div v-else-if="randomMeal">
-    <MealSummary :randomMeal="randomMeal"/>
-    <Tags :tags-array="tagsArray"/>
-    <Actions :loadRandomMeal="loadRandomMeal" :toggleIngredients="toggleIngredients" :toggleInstructions="toggleInstructions"/>
-  </div>
-
-  <Ingredients :is-showing-ingredients :random-meal="randomMeal"/>
-  <Instructions :is-showing-instructions="isShowingInstructions" :steps="steps"/>
-</div>
 </template>
